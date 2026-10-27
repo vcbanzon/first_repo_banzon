@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vincent Banzon – Designer &amp; Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg:#F4F1FF; --ink:#1E1B4B; --muted:#5A5780;
+  --coral:#FF5A5F; --sun:#FFC93C; --mint:#2EC4B6;
+  --display:'Syne','Helvetica Neue',Arial,sans-serif;
+  --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --max:1200px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.1rem/1.65 var(--body);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem}
+h2{font:800 clamp(2rem,5vw,3.25rem)/1.05 var(--display);letter-spacing:-.03em;margin:0 0 2rem}
+
+/* ===== Header ===== */
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;padding-bottom:1rem}
+.logo{font:800 1.4rem var(--display);text-decoration:none;letter-spacing:-.03em}
+.bar ul{display:flex;gap:1.5rem;list-style:none;margin:0;padding:0}
+.bar ul a{text-decoration:none;font-weight:500;background:linear-gradient(var(--coral),var(--coral)) 0 100%/0 3px no-repeat;transition:background-size .3s}
+.bar ul a:hover{background-size:100% 3px}
+@media (max-width:520px){.bar ul{gap:1rem;font-size:.95rem}}
+
+/* ===== Hero (the main animation moment) ===== */
+.hero{position:relative;min-height:86vh;display:flex;flex-direction:column;justify-content:center;padding-top:4rem;padding-bottom:4rem}
+.hero>*{position:relative;z-index:1}
+.hero h1{font:800 clamp(3rem,10.5vw,8.5rem)/.95 var(--display);letter-spacing:-.045em;margin:0 0 2rem}
+.line{display:block;overflow:hidden;padding-bottom:.1em}
+.line span{display:block;transform:translateY(110%);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+.line:nth-child(2) span{animation-delay:.12s}
+.line:nth-child(3) span{animation-delay:.24s}
+.intro{max-width:34rem;color:var(--muted);margin:0 0 2rem;opacity:0;animation:fade .8s .7s forwards}
+.btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fade .8s .9s forwards}
+.btn{display:inline-block;font:700 1.05rem var(--display);text-decoration:none;padding:.9rem 1.6rem;border-radius:999px;background:var(--ink);color:var(--bg);transition:transform .25s,background .25s}
+.btn:hover{transform:translateY(-3px) rotate(-2deg);background:var(--coral)}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.alt:hover{background:var(--sun);color:var(--ink)}
+
+.shape{position:absolute;z-index:0;pointer-events:none}
+.sun{width:clamp(90px,17vw,220px);aspect-ratio:1;border-radius:50%;background:var(--sun);right:5%;top:10%;animation:float 6s ease-in-out infinite}
+.tri{width:clamp(70px,12vw,150px);aspect-ratio:1;background:var(--mint);clip-path:polygon(50% 0,100% 100%,0 100%);right:24%;bottom:8%;animation:spin 16s linear infinite}
+.ring{width:clamp(60px,10vw,130px);aspect-ratio:1;border:14px solid var(--coral);border-radius:50%;right:3%;bottom:14%;animation:float 7s -2s ease-in-out infinite}
+
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+@keyframes float{50%{transform:translateY(-22px) rotate(8deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+
+.marquee{background:var(--ink);color:var(--bg);overflow:hidden;transform:rotate(-1.5deg);margin:2rem -2rem 5rem}
+.track{display:flex;width:max-content;animation:scroll 24s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.track span{font:700 1.5rem var(--display);padding:1rem 1.25rem;white-space:nowrap}
+.track span::after{content:"✦";color:var(--sun);margin-left:2.5rem}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ===== Work ===== */
+.work{padding-bottom:5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:1.5rem}
+.card{display:flex;flex-direction:column;gap:1rem;min-height:380px;padding:1.75rem;border-radius:28px;background:var(--c);color:var(--t,var(--ink));text-decoration:none;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.card:hover{transform:translateY(-10px) rotate(-1deg)}
+.card .art{flex:1;display:grid;place-items:center}
+.card .art i{display:block;width:44%;aspect-ratio:1;background:currentColor;border-radius:var(--r,50%);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.card:hover .art i{transform:rotate(180deg) scale(1.12)}
+.card h3{font:800 1.6rem/1.1 var(--display);letter-spacing:-.02em;margin:0}
+.card p{margin:.3rem 0 0;opacity:.85}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:.9rem 0 0;padding:0}
+.tags li{border:1.5px solid currentColor;border-radius:999px;padding:.1rem .7rem;font-size:.85rem}
+
+
+@supports (animation-timeline:view()){
+  .card{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+  @keyframes rise{from{opacity:0;transform:translateY(60px) scale(.96)}}
+}
+
+/* ===== About ===== */
+.about{padding-bottom:5rem}
+.about .cols{display:grid;grid-template-columns:minmax(0,1fr);gap:2.5rem}
+@media (min-width:860px){.about .cols{grid-template-columns:1.1fr 1fr;gap:4rem}}
+.about p{margin:0 0 1rem;max-width:60ch}
+.services{list-style:none;margin:0;padding:0}
+.services li{padding:1.1rem 1.25rem;border-radius:16px;margin-bottom:.75rem;border:2px solid var(--ink);transition:background .25s,transform .25s}
+.services li:hover{background:var(--sun);transform:translateX(8px)}
+.services strong{display:block;font:800 1.2rem var(--display)}
+.services span{color:var(--muted);font-size:1rem}
+
+/* ===== Contact ===== */
+.contact{padding-bottom:4rem}
+.mail{display:inline-block;font:800 clamp(1.7rem,6.2vw,4.6rem)/1.1 var(--display);letter-spacing:-.03em;text-decoration:none;word-break:break-word;background:linear-gradient(var(--coral),var(--coral)) 0 100%/0 .12em no-repeat;transition:background-size .45s}
+.mail:hover{background-size:100% .12em}
+.links{display:flex;gap:1.5rem;flex-wrap:wrap;list-style:none;margin:2rem 0 0;padding:0}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.95rem}
+
+/* ===== Respect reduced-motion settings ===== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .line span{transform:none}.intro,.btns{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+
+    <a class="logo" href="#top">Vincent Banzon</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+
+  <section class="hero wrap">
+    <span class="shape sun" aria-hidden="true"></span>
+    <span class="shape tri" aria-hidden="true"></span>
+    <span class="shape ring" aria-hidden="true"></span>
+    <h1>
+      <span class="line"><span>Designing</span></span>
+      <span class="line"><span>things that</span></span>
+      <span class="line"><span>move people.</span></span>
+    </h1>
+    <p class="intro">I’m Vincent Charles Banzon, a designer and front-end developer who builds playful, fast and accessible websites and apps.</p>
+    <div class="btns">
+      <a class="btn" href="#work">See my work</a>
+      <a class="btn alt" href="#contact">Say hello</a>
+    </div>
+  </section>
+
+ 
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>UI design</span><span>Branding</span><span>Front-end</span><span>Motion</span><span>Prototyping</span><span>Accessibility</span>
+      <span>UI design</span><span>Branding</span><span>Front-end</span><span>Motion</span><span>Prototyping</span><span>Accessibility</span>
+    </div>
+  </div>
+
+
+  <section class="work wrap" id="work">
+    <h2>Selected work</h2>
+    <div class="grid">
+
+  
+      <a class="card" href="#" style="--c:var(--coral);--r:50%">
+        <div class="art" aria-hidden="true"><i></i></div>
+        <div>
+          <h3>Lumen Budget</h3>
+          <p>A budgeting app that shows what you can spend today.</p>
+          <ul class="tags"><li>Mobile app</li><li>2026</li></ul>
+        </div>
+      </a>
+
+      <a class="card" href="#" style="--c:var(--sun);--r:0">
+        <div class="art" aria-hidden="true"><i></i></div>
+        <div>
+          <h3>Harbor Studio</h3>
+          <p>A fast portfolio site for an architecture studio.</p>
+          <ul class="tags"><li>Website</li><li>2025</li></ul>
+        </div>
+      </a>
+
+      <a class="card" href="#" style="--c:var(--mint);--r:50% 0 50% 0">
+        <div class="art" aria-hidden="true"><i></i></div>
+        <div>
+          <h3>Trailhead UI</h3>
+          <p>A shared component library used by four product teams.</p>
+          <ul class="tags"><li>Design system</li><li>2024</li></ul>
+        </div>
+      </a>
+
+      <a class="card" href="#" style="--c:var(--ink);--t:var(--bg);--r:50% 50% 0 0">
+        <div class="art" aria-hidden="true"><i></i></div>
+        <div>
+          <h3>Fieldnote Editor</h3>
+          <p>A distraction-free web editor for writers and researchers.</p>
+          <ul class="tags"><li>Web app</li><li>2023</li></ul>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+
+  <section class="about wrap" id="about">
+    <h2>A bit about me</h2>
+    <div class="cols">
+      <div>
+        <p>I’ve spent six years helping startups and studios turn rough ideas into products people enjoy using. I sketch on paper first, then build in code so I can test ideas in the browser early.</p>
+        <p>Outside of work you’ll find me cycling, cooking for friends and recording the sounds of new cities.</p>
+      </div>
+      <ul class="services">
+        <li><strong>Interface design</strong><span>Clear screens, flows and design systems.</span></li>
+        <li><strong>Front-end development</strong><span>HTML, CSS and JavaScript that loads quickly.</span></li>
+        <li><strong>Motion and polish</strong><span>Small animations that make things feel alive.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  
+  <section class="contact wrap" id="contact">
+    <h2>Let’s work together</h2>
+    <a class="mail" href="mailto:hello@example.com">hello@example.com</a>
+    <ul class="links">
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Dribbble</a></li>
+      <li><a href="#">Download résumé</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">© 2026 Your Name</footer>
+
+</body>
+</html>
